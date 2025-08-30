@@ -16,7 +16,7 @@ else
 fi
 
 #start jupyter notebook
-nohup jupyter notebook > "$HOME/jupyter_notebook.log" 2>&1 &
+jupyter notebook
 
 #deactivate
 deactivate
