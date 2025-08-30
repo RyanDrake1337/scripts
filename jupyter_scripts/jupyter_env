@@ -1,0 +1,22 @@
+#!/bin/bash
+
+ENV_NAME="$HOME/jupyter_env2"
+
+#if the environment folder doesn't exist then this will create it and install jupyter, otherwise just start jupyter
+
+if [ ! -d "$ENV_NAME" ]; then
+	echo "Creating virtual environment: $ENV_NAME"
+	python3 -m venv "$ENV_NAME"
+	source "$ENV_NAME/bin/activate"
+	pip install --upgrade pip
+	pip install notebook
+else
+	echo "Using existing virtual environment: $ENV_NAME"
+	source "$ENV_NAME/bin/activate"
+fi
+
+#start jupyter notebook
+jupyter notebook
+
+#deactivate
+deactivate
