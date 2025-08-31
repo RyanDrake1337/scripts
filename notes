@@ -1,0 +1,21 @@
+# Jupyter + Pandas + SQLite Environment Setup
+``` Start a local virtual enviroment with venv python module```
+
+python3 -m venv ~/jupyter_env
+source ~/jupyter_env/bin/activate
+jupyter notebook &
+
+``` install required packages if needed```
+pip install --upgrade pip
+pip install notebook pandas sqlite3-binary
+
+``` Example code to use Jupyter notebook to import required libraries ```
+import pandas as pd
+import sqlite3
+
+conn = sqlite3.connect(":memory:") #this creates a variable to use the sqlite3 connect module to connect to a db
+
+df = pd.DataFrame({"id": [1, 2], "name": ["Alice", "Bob"]})
+df.to_sql("users", conn, index=False, if_exists="replace")
+result = pd.read_sql_query("SELECT * FROM users;", conn)
+print(result)

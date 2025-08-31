@@ -10,6 +10,7 @@ if [ ! -d "$ENV_NAME" ]; then
 	source "$ENV_NAME/bin/activate"
 	pip install --upgrade pip
 	pip install notebook
+    	pip install pandas
 else
 	echo "Using existing virtual environment: $ENV_NAME"
 	source "$ENV_NAME/bin/activate"
